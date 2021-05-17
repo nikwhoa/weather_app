@@ -1,22 +1,25 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Weather</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>Current weather</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="wrapper">
-    <div class="title">current weather</div>
-    <div class="degrees">
-        16 <div><span>&#8451;</span></div>
-    </div>
-    <div class="weather">
-        cloudy
-    </div>
-    <div class="icon cloudy"><img src="" alt=""></div>
-</div>
 
+<body>
+<div class="container first-container">
+<h2 class="ui header">Hey! Just click the button <i aria-hidden="true" class="dot circle outline link icon do-not-touch"></i> in the input bellow and allow to find out where are you now</h2>
+</div>
+    <section class="container">
+    <div class="ui icon big input" id="locator-input-section">
+        <input type="text" placeholder="Enter Your Address" id="autocomplete" />
+        <i aria-hidden="true" class="dot circle outline link icon" id="locator-button"></i>
+    </div>
+</section>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXU7Jq5_dCqYHtzCKX01aksb20xl1vzaA&libraries=places"></script>
 <script src="script.js"></script>
 </body>
 </html>
