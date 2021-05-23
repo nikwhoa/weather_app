@@ -9,20 +9,12 @@
 
 <body>
 <div class="container first-container">
-    <h2 class="ui header">Hey! Just click the button <i aria-hidden="true"
-                                                        class="dot circle outline link icon do-not-touch"></i> in the
-        input bellow and allow to find out where are you now</h2>
+    <h2 class="ui header">Hey! Just click the button <i aria-hidden="true" alt="find your location" id="locator-button"
+                                                        class="dot circle outline link icon"></i>and allow to find out where are you now</h2>
+    <input type="text" hidden="hidden" placeholder="" id="autocomplete"/>
+    <div class="ui active centered inline locator-input-section"></div>
 </div>
-<section class="container">
-    <div class="ui icon big input" id="locator-input-section">
-        <input type="text" placeholder="Enter Your Address" id="autocomplete"/>
-        <i aria-hidden="true" class="dot circle outline link icon" id="locator-button"></i>
-    </div>
-</section>
-<div class="container current-weather-container">
-    <div class="current-weather"></div>
-    <div class="feels-like"></div>
-</div>
+
 
 
 

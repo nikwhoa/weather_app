@@ -4,8 +4,6 @@ html, body {
     font-family: Roboto;
 }
 .container {
-    height: 150px;
-    /*min-height: 100vh;*/
     width: 100%;
     display: flex;
     justify-content: center;
@@ -13,49 +11,10 @@ html, body {
     text-align: center;
 }
 .first-container {
-    height: 100px;
-    width: 50%;
+    width: 60%;
     display: block;
-    margin: 2.5rem auto;
-}
-
-#locator-input-section {
-    width: 100%;
-    margin: 10px;
-    max-width: 600px;
-
-}
-.do-not-touch {
-    cursor: default!important;
-}
-.wrapper {
-    width: 100%;
-    height: 100vh;
-    background: center center no-repeat;
-    background-size: cover;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-.wrapper div {
-    margin: 10px 0;
-}
-.title {
-    font-size: 1.7rem;
-    text-transform: uppercase;
-}
-.degrees {
-    font-size: 3.2rem;
-    content: "\2103";
-}
-.weather {
-    font-size: 2rem;
-}
-.icon {
-    width: 50px;
-    height: 50px;
+    margin: 0 auto;
+    padding-top: 9rem;
 }
 .current-weather, .feels-like {
     font-size: 1.5rem;
@@ -65,4 +24,5 @@ html, body {
 }
 .current-weather-container {
     flex-direction: column;
+    padding-top: 5rem;
 }
