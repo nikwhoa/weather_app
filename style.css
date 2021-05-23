@@ -4,7 +4,7 @@ html, body {
     font-family: Roboto;
 }
 .container {
-    height: 200px;
+    height: 150px;
     /*min-height: 100vh;*/
     width: 100%;
     display: flex;
@@ -56,4 +56,13 @@ html, body {
 .icon {
     width: 50px;
     height: 50px;
+}
+.current-weather, .feels-like {
+    font-size: 1.5rem;
+}
+.feels-like {
+    margin-top: 20px;
+}
+.current-weather-container {
+    flex-direction: column;
 }

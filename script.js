@@ -1,3 +1,6 @@
+let currentWeather = document.querySelector('.current-weather'),
+    feelsLike = document.querySelector('.feels-like');
+
 (function () {
     const locatorSection = document.querySelector('#locator-input-section')
     const input = document.querySelector('#autocomplete');
@@ -15,11 +18,26 @@
 
     function getUserAddressBy(lat, long) {
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
+        xhttp.onreadystatechange = async function () {
             if (this.readyState == 4 && this.status == 200) {
                 let address = JSON.parse(this.responseText)
-                // console.log(address)
                 setAddressToInputField(address.results[4].formatted_address)
+
+                // get weather data based on user's location and pass the value to the script file
+                const weatherApi = document.querySelector('script#weatherApi')
+                weatherApi.src = `https://api.openweathermap.org/data/2.5/weather?lat=${address.results[4].geometry.location.lat}&lon=${address.results[4].geometry.location.lng}&appid=0925dd6be044b4e39cc129ed0f21e56f`
+                // console.log(weatherApi)
+
+                // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${address.results[4].geometry.location.lat}&lon=${address.results[4].geometry.location.lng}&appid=0925dd6be044b4e39cc129ed0f21e56f`)
+                //     .then(results => results.json()).then()
+
+                let url = `https://api.openweathermap.org/data/2.5/weather?lat=${address.results[4].geometry.location.lat}&lon=${address.results[4].geometry.location.lng}&units=metric&lang=ru&appid=0925dd6be044b4e39cc129ed0f21e56f`
+                let response = await fetch(url)
+                let jsonWeather = await response.json()
+                console.log(jsonWeather)
+                currentWeather.textContent = `Current weather is ${ jsonWeather.weather[0].main }`
+                feelsLike.textContent = `Feels like ${ Math.floor(jsonWeather.main.feels_like) } \u2103`
+
             }
         };
         xhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&key=AIzaSyAXU7Jq5_dCqYHtzCKX01aksb20xl1vzaA", true);
@@ -48,6 +66,15 @@
 
 let doNotTouch = document.querySelector('.do-not-touch')
 
+
+
+
+
+// window.addEventListener('DOMContentLoaded',() => {
+//
+//     console.log(weatherApi.src)
+//
+// } )
 // doNotTouch.addEventListener('click', (e) => {
 //     e.preventDefault()
 // })

@@ -1,25 +1,33 @@
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8"/>
     <title>Current weather</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 <div class="container first-container">
-<h2 class="ui header">Hey! Just click the button <i aria-hidden="true" class="dot circle outline link icon do-not-touch"></i> in the input bellow and allow to find out where are you now</h2>
+    <h2 class="ui header">Hey! Just click the button <i aria-hidden="true"
+                                                        class="dot circle outline link icon do-not-touch"></i> in the
+        input bellow and allow to find out where are you now</h2>
 </div>
-    <section class="container">
+<section class="container">
     <div class="ui icon big input" id="locator-input-section">
-        <input type="text" placeholder="Enter Your Address" id="autocomplete" />
+        <input type="text" placeholder="Enter Your Address" id="autocomplete"/>
         <i aria-hidden="true" class="dot circle outline link icon" id="locator-button"></i>
     </div>
 </section>
+<div class="container current-weather-container">
+    <div class="current-weather"></div>
+    <div class="feels-like"></div>
+</div>
+
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXU7Jq5_dCqYHtzCKX01aksb20xl1vzaA&libraries=places"></script>
+<script id="weatherApi" src=""></script>
 <script src="script.js"></script>
 </body>
 </html>
