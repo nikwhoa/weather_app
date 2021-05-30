@@ -52,7 +52,7 @@ feelsLike.classList.add('feels-like');
                 currentWeather.insertAdjacentElement('afterend', feelsLike)
                 currentWeather.textContent = `Current weather is ${jsonWeather.weather[0].main}`
                 feelsLike.textContent = `Feels like ${Math.floor(jsonWeather.main.feels_like)} \u2103`
-                let gifUrl = `http://api.giphy.com/v1/gifs/search?q=${currentWeather.textContent}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=5`
+                let gifUrl = `https://api.giphy.com/v1/gifs/search?q=${currentWeather.textContent}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=5`
                 let gifResponse = await fetch(gifUrl)
                 let gifData = await gifResponse.json()
                 let getRandomInt = (max) => Math.floor(Math.random() * max);
