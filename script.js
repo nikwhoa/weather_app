@@ -1,7 +1,7 @@
 'use strict'
 // let currentWeather = document.querySelector('.current-weather'),
 //     feelsLike = document.querySelector('.feels-like'),
-let    currentWeatherContainer = document.createElement('div'),
+let currentWeatherContainer = document.createElement('div'),
     currentWeather = document.createElement('div'),
     feelsLike = document.createElement('div'),
     firstContainer = document.querySelector('.first-container');
@@ -12,18 +12,20 @@ currentWeather.classList.add('current-weather')
 feelsLike.classList.add('feels-like');
 
 
-
 (function () {
     const locatorSection = document.querySelector('.locator-input-section');
+
     // const input = document.querySelector('#autocomplete');
 
     function init() {
         let locatorButton = document.querySelector('#locator-button').addEventListener('click', () => {
             locatorSection.classList.add('loader')
-            navigator.geolocation.getCurrentPosition((position) => {getUserAddressBy(position.coords.latitude, position.coords.longitude)}, () => {
-                    locatorSection.classList.remove("loading")
-                    alert("The Location was denied :( Please add your address manually")
-                })
+            navigator.geolocation.getCurrentPosition((position) => {
+                getUserAddressBy(position.coords.latitude, position.coords.longitude)
+            }, () => {
+                locatorSection.classList.remove("loading")
+                alert("The Location was denied :( Please add your address manually")
+            })
         })
     }
 
@@ -48,8 +50,16 @@ feelsLike.classList.add('feels-like');
                 firstContainer.insertAdjacentElement('afterend', currentWeatherContainer)
                 currentWeatherContainer.append(currentWeather)
                 currentWeather.insertAdjacentElement('afterend', feelsLike)
-                currentWeather.textContent = `Current weather is ${ jsonWeather.weather[0].main }`
-                feelsLike.textContent = `Feels like ${ Math.floor(jsonWeather.main.feels_like) } \u2103`
+                currentWeather.textContent = `Current weather is ${jsonWeather.weather[0].main}`
+                feelsLike.textContent = `Feels like ${Math.floor(jsonWeather.main.feels_like)} \u2103`
+                let gifUrl = `http://api.giphy.com/v1/gifs/search?q=${currentWeather.textContent}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=5`
+                let gifResponse = await fetch(gifUrl)
+                let gifData = await gifResponse.json()
+                let getRandomInt = (max) => Math.floor(Math.random() * max);
+                console.log(gifData.data[getRandomInt(5)].images.looping.mp4)
+                let gifDiv = document.querySelector('#gif-picture')
+                gifDiv.src = gifData.data[getRandomInt(5)].images.looping.mp4
+                // gifDiv.innerHTML = `<img src="${gifData.data[getRandomInt(5)].url}" alt="" />`
             }
         };
         xhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&key=AIzaSyAXU7Jq5_dCqYHtzCKX01aksb20xl1vzaA", true);
@@ -62,11 +72,24 @@ feelsLike.classList.add('feels-like');
 
 
 (async () => {
-    let unsUrl = 'https://api.unsplash.com/photos/?client_id=cwAg2UkyqbQtcQeocOenGhBu-mLWT-dJlUN0uQZIL5E'
-    let unsResponse = await fetch(unsUrl)
 
-    let unsData = await unsResponse.json()
 
-    console.log(unsData[0].urls.raw)
+    //javascript, jQuery
+    // while (currentWeather.textContent === '' && currentWeather.textContent === ' ') {
+    //
+    // }
+    // let gifUrl = `http://api.giphy.com/v1/gifs/search?q=${currentWeather.textContent}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=5`
+    // let gifResponse = await fetch(gifUrl)
+    // let gifData = await gifResponse.json()
+    // console.log(gifData.data[0].url)
+    // let xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5");
+    // xhr.done(function(data) { console.log("success got data", data); });
+
+    // let unsUrl = 'https://api.unsplash.com/photos/?client_id=cwAg2UkyqbQtcQeocOenGhBu-mLWT-dJlUN0uQZIL5E'
+    // let unsResponse = await fetch(unsUrl)
+    //
+    // let unsData = await unsResponse.json()
+    //
+    // console.log(unsData[0].urls.raw)
 })()
 
