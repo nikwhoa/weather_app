@@ -14,6 +14,7 @@ if (data.getHours() >= 21 || data.getHours() <= 6) {
 let currentWeatherContainer = document.createElement('div'),
     currentWeather = document.createElement('div'),
     feelsLike = document.createElement('div'),
+    header = document.querySelector('.header'),
     firstContainer = document.querySelector('.first-container');
 
 currentWeatherContainer.classList.add('container', 'current-weather-container')
@@ -46,6 +47,7 @@ feelsLike.classList.add('feels-like');
                 let address = JSON.parse(this.responseText)
 
                 locatorSection.classList.remove('loader')
+                header.remove()
                 // get weather data based on user's location and pass the value to the script file
                 const weatherApi = document.querySelector('script#weatherApi')
                 weatherApi.src = `https://api.openweathermap.org/data/2.5/weather?lat=${address.results[4].geometry.location.lat}&lon=${address.results[4].geometry.location.lng}&appid=0925dd6be044b4e39cc129ed0f21e56f`
@@ -83,10 +85,11 @@ feelsLike.classList.add('feels-like');
                 let gifResponse = await fetch(gifUrl)
                 let gifData = await gifResponse.json()
                 let getRandomInt = (max) => Math.floor(Math.random() * max);
-                console.log(gifData);
-                console.log(getRandomInt(15));
+                // console.log(gifData);
+                // console.log(getRandomInt(15));
                 // console.log(gifData.data[getRandomInt(10)].images)
                 let gifDiv = document.querySelector('#gif-picture')
+                gifDiv.classList.add('gif-picture-mob')
                 gifDiv.src = gifData.data[getRandomInt(15)].images.original.url
                 // gifDiv.src = gifData.data[0].images.original.url
                 // gifDiv.innerHTML = `<img src="${gifData.data[getRandomInt(5)].url}" alt="" />`

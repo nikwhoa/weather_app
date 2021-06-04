@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     font-family: Roboto;
     background: #fff;
+    height: auto;
 }
 body.dark-theme {
     background: #121212;
@@ -36,4 +37,11 @@ body.dark-theme {
 }
 #gif-picture {
     max-height: 300px;
+}
+@media screen and (max-width: 900px) {
+     .gif-picture-mob {
+        width: 100%;
+        height: auto;
+        max-height: none;      
+     }   
 }
