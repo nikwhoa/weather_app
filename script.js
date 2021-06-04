@@ -1,4 +1,14 @@
 'use strict'
+
+/* comment if you don't need dark theme */
+const data = new Date
+console.log(data.getHours());
+if (data.getHours() >= 21 || data.getHours() <= 6) {
+    document.body.classList.add('dark-theme')
+    document.querySelector('h2.header').classList.add('header-white')
+} 
+
+
 // let currentWeather = document.querySelector('.current-weather'),
 //     feelsLike = document.querySelector('.feels-like'),
 let currentWeatherContainer = document.createElement('div'),
@@ -51,14 +61,34 @@ feelsLike.classList.add('feels-like');
                 currentWeatherContainer.append(currentWeather)
                 currentWeather.insertAdjacentElement('afterend', feelsLike)
                 currentWeather.textContent = `Current weather is ${jsonWeather.weather[0].main}`
+                let currentWeatherForGyphy
+                switch (jsonWeather.weather[0].main) {
+                    case 'Clear':
+                        currentWeatherForGyphy = 'sunny'    
+                        break;
+                    case 'Rain':
+                        currentWeatherForGyphy = 'rain'    
+                        break;
+                    default:
+                        currentWeatherForGyphy = 'amazing'
+                        break;
+                }
+                // alert(jsonWeather.weather[0].main);
+                // alert(currentWeatherForGyphy);
+    
                 feelsLike.textContent = `Feels like ${Math.floor(jsonWeather.main.feels_like)} \u2103`
-                let gifUrl = `https://api.giphy.com/v1/gifs/search?q=${currentWeather.textContent}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=5`
+                // console.log(`${jsonWeather.weather[0].main}${' weather'}`);
+                let gifUrl = `https://api.giphy.com/v1/gifs/search?q=${currentWeatherForGyphy}${' sky'}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=15`
+                // let gifUrl = `https://api.giphy.com/v1/gifs/search/tags?q=${jsonWeather.weather[0].main}${' weather'}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=5`
                 let gifResponse = await fetch(gifUrl)
                 let gifData = await gifResponse.json()
                 let getRandomInt = (max) => Math.floor(Math.random() * max);
-                console.log(gifData.data[getRandomInt(5)].images.looping.mp4)
+                console.log(gifData);
+                console.log(getRandomInt(15));
+                // console.log(gifData.data[getRandomInt(10)].images)
                 let gifDiv = document.querySelector('#gif-picture')
-                gifDiv.src = gifData.data[getRandomInt(5)].images.looping.mp4
+                gifDiv.src = gifData.data[getRandomInt(15)].images.original.url
+                // gifDiv.src = gifData.data[0].images.original.url
                 // gifDiv.innerHTML = `<img src="${gifData.data[getRandomInt(5)].url}" alt="" />`
             }
         };

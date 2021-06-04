@@ -2,6 +2,14 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Roboto;
+    background: #fff;
+}
+body.dark-theme {
+    background: #121212;
+    color: #fff;
+}
+.header-white {
+    color: #fff !important;
 }
 .container {
     width: 100%;
@@ -25,4 +33,7 @@ html, body {
 .current-weather-container {
     flex-direction: column;
     padding-top: 5rem;
+}
+#gif-picture {
+    max-height: 300px;
 }
