@@ -1,12 +1,12 @@
 'use strict'
 
 /* comment if you don't need dark theme */
-const data = new Date
-console.log(data.getHours());
-if (data.getHours() >= 21 || data.getHours() <= 6) {
-    document.body.classList.add('dark-theme')
-    document.querySelector('h2.header').classList.add('header-white')
-} 
+// const data = new Date
+// console.log(data.getHours());
+// if (data.getHours() >= 21 || data.getHours() <= 6) {
+//     document.body.classList.add('dark-theme')
+//     document.querySelector('h2.header').classList.add('header-white')
+// } 
 
 
 // let currentWeather = document.querySelector('.current-weather'),
@@ -88,9 +88,16 @@ feelsLike.classList.add('feels-like');
                 // console.log(gifData);
                 // console.log(getRandomInt(15));
                 // console.log(gifData.data[getRandomInt(10)].images)
-                let gifDiv = document.querySelector('#gif-picture')
-                gifDiv.classList.add('gif-picture-mob')
-                gifDiv.src = gifData.data[getRandomInt(15)].images.original.url
+                let gifDiv = document.querySelector('#gif-picture');
+                document.body.style.background = `url('${gifData.data[getRandomInt(15)].images.original.url}')`;
+                document.body.style.backgroundRepeat = 'no-repeat';
+                document.body.style.backgroundSize = 'cover';
+                document.body.style.backgroundPosition = 'center center';
+                
+                // console.log(body);
+                // gifDiv.classList.add('gif-picture-mob')
+                // gifDiv.src = gifData.data[getRandomInt(15)].images.original.url
+                // gifDiv.alt = currentWeatherForGyphy
                 // gifDiv.src = gifData.data[0].images.original.url
                 // gifDiv.innerHTML = `<img src="${gifData.data[getRandomInt(5)].url}" alt="" />`
             }

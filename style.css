@@ -9,10 +9,25 @@ body.dark-theme {
     background: #121212;
     color: #fff;
 }
+.cover{
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    }
 .header-white {
     color: #fff !important;
 }
+.ui.header {
+    color: white !important;
+}
 .container {
+    position: relative;
+    z-index: 2;
+    font-weight: bold;
+    color: white;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -26,7 +41,8 @@ body.dark-theme {
     padding-top: 9rem;
 }
 .current-weather, .feels-like {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    text-shadow: 3px 3px 2px rgba(10, 10, 10, 1);
 }
 .feels-like {
     margin-top: 20px;
