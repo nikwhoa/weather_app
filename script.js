@@ -30,7 +30,7 @@ feelsLike.classList.add('feels-like');
 
     function init() {
         let locatorButton = document.querySelector('#locator-button').addEventListener('click', () => {
-            locatorSection.classList.add('loader')
+            locatorSection.classList.add('loader');
             navigator.geolocation.getCurrentPosition((position) => {
                 getUserAddressBy(position.coords.latitude, position.coords.longitude)
             }, () => {
@@ -50,19 +50,19 @@ feelsLike.classList.add('feels-like');
                 header.remove()
                 // get weather data based on user's location and pass the value to the script file
                 const weatherApi = document.querySelector('script#weatherApi')
-                weatherApi.src = `https://api.openweathermap.org/data/2.5/weather?lat=${address.results[4].geometry.location.lat}&lon=${address.results[4].geometry.location.lng}&appid=0925dd6be044b4e39cc129ed0f21e56f`
+                weatherApi.src = `https://api.openweathermap.org/data/2.5/weather?lat=${address.results[4].geometry.location.lat}&lon=${address.results[4].geometry.location.lng}&appid=0925dd6be044b4e39cc129ed0f21e56f`;
                 // console.log(weatherApi)
 
                 // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${address.results[4].geometry.location.lat}&lon=${address.results[4].geometry.location.lng}&appid=0925dd6be044b4e39cc129ed0f21e56f`)
                 //     .then(results => results.json()).then()
 
                 let url = `https://api.openweathermap.org/data/2.5/weather?lat=${address.results[4].geometry.location.lat}&lon=${address.results[4].geometry.location.lng}&units=metric&lang=ru&appid=0925dd6be044b4e39cc129ed0f21e56f`
-                let response = await fetch(url)
-                let jsonWeather = await response.json()
-                firstContainer.insertAdjacentElement('afterend', currentWeatherContainer)
-                currentWeatherContainer.append(currentWeather)
-                currentWeather.insertAdjacentElement('afterend', feelsLike)
-                currentWeather.textContent = `Current weather is ${jsonWeather.weather[0].main}`
+                let response = await fetch(url);
+                let jsonWeather = await response.json();
+                firstContainer.insertAdjacentElement('afterend', currentWeatherContainer);
+                currentWeatherContainer.append(currentWeather);
+                currentWeather.insertAdjacentElement('afterend', feelsLike);
+                currentWeather.textContent = `Current weather is ${jsonWeather.weather[0].main}`;
                 let currentWeatherForGyphy
                 switch (jsonWeather.weather[0].main) {
                     case 'Clear':
