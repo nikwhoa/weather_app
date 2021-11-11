@@ -54,8 +54,8 @@ const getPosition = new Promise((resolve, reject) => {
                 currentWeatherContainer.append(currentWeather);
                 currentWeather.insertAdjacentElement('afterend', feelsLike);
                 firstContainer.remove();
-                
-                currentWeather.textContent = `There is a ${weather}`;
+
+                currentWeather.textContent = `There is ${weather}`;
                 feelsLike.textContent = `Feels like ${Math.floor(temp)} \u2103`;
 
 
@@ -63,12 +63,12 @@ const getPosition = new Promise((resolve, reject) => {
             })
             .then(weather => weather)
             .then(weather => {
-                fetch(`https://api.giphy.com/v1/gifs/search?q=${weather}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=30`)
+                fetch(`https://api.giphy.com/v1/gifs/search?q=${`fall ${weather}`}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=30`)
                     .then((response) => response.json())
                     .then(data => {
                         const getRandomInt = (max) => Math.floor(Math.random() * max);
                         const giphyUrl = data.data[getRandomInt(data.data.length)].images.original.url;
-                        
+
                         document.body.style.background = `url('${giphyUrl}')`;
                         document.body.style.backgroundRepeat = 'no-repeat';
                         document.body.style.backgroundSize = 'cover';
