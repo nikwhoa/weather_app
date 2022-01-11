@@ -15,6 +15,20 @@ const locatorSection = document.querySelector('.locator-input-section');
 const locatorButton = document.querySelector('#locator-button');
 let storage;
 
+const season = () => {
+    let date = new Date().getMonth()
+    if (date <= 1) {
+        return 'winter'
+    } else if (date <= 4 && date > 1) {
+        return 'spring'
+    } else if (date <= 7 && date > 4) {
+        return 'summer'
+    } else if (date <= 10 && date > 7) {
+        return 'autumn'
+    } else {
+        return 'winter'
+    }
+}
 
 
 
@@ -46,7 +60,7 @@ const getPosition = new Promise((resolve, reject) => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${data.latitude}&lon=${data.longitude}&lang=en&units=metric&appid=0925dd6be044b4e39cc129ed0f21e56f`)
             .then((response) => response.json())
             .then(data => {
-
+                
                 let weather = data.weather[0].description;
                 const temp = data.main.feels_like;
                 // let correctTemp = temp.toFixed(2);
@@ -58,12 +72,12 @@ const getPosition = new Promise((resolve, reject) => {
                 currentWeather.textContent = `There is ${weather}`;
                 feelsLike.textContent = `Feels like ${Math.floor(temp)} \u2103`;
 
-
+                
                 return weather;
             })
             .then(weather => weather)
             .then(weather => {
-                fetch(`https://api.giphy.com/v1/gifs/search?q=${`fall ${weather}`}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=30`)
+                fetch(`https://api.giphy.com/v1/gifs/search?q=${`weather ${weather} ${season()}`}&api_key=5d0kUraA0PAjYljYQh0JvKFAVbU7I1RX&limit=30`)
                     .then((response) => response.json())
                     .then(data => {
                         const getRandomInt = (max) => Math.floor(Math.random() * max);
